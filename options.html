@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language translation Connector Settings</title>
+    <link rel="stylesheet" href="options.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Language translation Connector Settings</h1>
+            <p>拡張機能の設定を変更します。</p>
+        </header>
+
+        <main>
+            <section class="settings-group">
+                <h2><span class="icon">🔌</span> API Settings</h2>
+                <div class="input-field">
+                    <label for="fetchAddress">API Endpoint URL</label>
+                    <input type="text" id="fetchAddress" placeholder="http://localhost:1234/v1/chat/completions">
+                    <small>OpenAI互換のURLを入力してください <br>
+                        例：<br>
+                        https://api.openai.com/v1/chat/completions<br>
+                        https://generativelanguage.googleapis.com/v1beta/openai/chat/completions</small>
+                </div>
+                <div class="input-field">
+                    <label for="apiKey">API Key (Cloud Only)</label>
+                    <input type="password" id="apiKey" placeholder="sk-...">
+                    <small>クラウドモデル使用時のみ必要です。キーはブラウザに安全に保存されます。</small>
+                </div>
+                <div class="external-links">
+                    <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener">OpenAI Keys</a>
+                    <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener">Gemini Keys</a>
+                </div>
+            </section>
+
+            <section class="settings-group">
+                <h2><span class="icon">🧠</span> Model Parameters</h2>
+                <div class="input-grid">
+                    <div class="input-field">
+                        <label for="modelName">Model Name</label>
+                        <input type="text" id="modelName" placeholder="gemma-transrate@q8_0">
+                        <small>例：gemini-2.5-flash-lite</small>
+                    </div>
+                    <div class="input-field">
+                        <label for="temperature">Temperature</label>
+                        <input type="number" id="temperature" step="0.1" min="0" max="2" placeholder="0.0">
+                        <small>例：0.0 ～ 2.0<br>0が最も決定的で、2が最も多様性が高い</small>
+                    </div>
+                    <div class="input-field">
+                        <label for="maxTokens">Max Tokens</label>
+                        <input type="number" id="maxTokens" step="1" min="256" max="4096" placeholder="512">
+                        <small>例：256 ～ 4096<br>翻訳する最大文字数</small>
+                    </div>
+                </div>
+            </section>
+
+            <section class="settings-group">
+                <h2><span class="icon">🖱️</span> Behavior</h2>
+                <div class="input-field">
+                    <label for="selectMinTextLength">Minimum Selection Length</label>
+                    <input type="number" id="selectMinTextLength" min="3" max="256" placeholder="5">
+                    <small>例：3 ～ 5文字<br>指定文字数未満の場合は翻訳を行いません。</small>
+                </div>
+            </section>
+
+            <div class="actions">
+                <button id="save" class="btn-primary">Save Settings</button>
+                <button id="reset" class="btn-secondary">Reset to Defaults</button>
+            </div>
+        </main>
+
+        <div id="status" class="toast"></div>
+    </div>
+    <script src="options.js"></script>
+</body>
+
+</html>
