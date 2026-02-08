@@ -155,6 +155,15 @@
                     this.isGenerating = false;
                     return;
                 }
+                if (msg.error) {
+                    const popup = document.getElementById(CONFIG.POPUP_ID);
+                    if (popup) {
+                        popup.innerText = `❌ ${msg.error}`;
+                        popup.style.color = '#ff4444';
+                    }
+                    this.isGenerating = false;
+                    return;
+                }
                 if (msg.chunk) {
                     this.updatePopupText(msg.chunk, selection);
                 }
