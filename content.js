@@ -22,11 +22,11 @@
         }
 
         /**
-         * 初期化：イベントリスナーの登録
+         * 初期化：イベントリスナーの登録（capturing phaseで取得）
          */
         init() {
-            document.addEventListener('mousedown', (e) => this.handleMouseDown(e));
-            document.addEventListener('mouseup', (e) => this.handleMouseUp(e));
+            document.addEventListener('mousedown', (e) => this.handleMouseDown(e), true);
+            document.addEventListener('mouseup', (e) => this.handleMouseUp(e), true);
         }
 
         /**
